@@ -1,2 +1,4 @@
-add_lunch_combo omni_aio_otfp_m-userdebug
+add_lunch_combo lineage_aio_otfp-user
+add_lunch_combo lineage_aio_otfp-userdebug
+add_lunch_combo lineage_aio_otfp-eng
 
