@@ -15,19 +15,16 @@
 #
 
 # call the proprietary setup
-$(call inherit-product, vendor/lenovo/aio_otfp_m/aio_otfp_m-vendor.mk)
+$(call inherit-product, vendor/lenovo/aio_otfp/aio_otfp-vendor.mk)
 
 # The gps config appropriate for this device
 $(call inherit-product, device/common/gps/gps_as_supl.mk)
 
-LOCAL_PATH := device/lenovo/aio_otfp_m
+LOCAL_PATH := device/lenovo/aio_otfp
 
 # Device uses high-density artwork where available
 PRODUCT_AAPT_CONFIG := normal
 PRODUCT_AAPT_PREF_CONFIG := xhdpi
-
-# Recovery allowed devices
-TARGET_OTA_ASSERT_DEVICE := K50-t5,aio_otfp_m,K3Note
 
 # Audio policy & codec
 PRODUCT_COPY_FILES += \
@@ -43,6 +40,10 @@ PRODUCT_COPY_FILES += \
 PRODUCT_PACKAGES += \
     libccci_util \
     libcam.halsensor \
+    libgralloc_extra \
+    libgui_ext \
+    libion \
+    libui_ext \
     libwvmsym
 
 # GPS
@@ -50,6 +51,10 @@ PRODUCT_PACKAGES += \
     gps.mt6752 \
     libcurl \
     YGPS
+
+PRODUCT_PACKAGES += \
+    FMRadio \
+    libfmjni
 
 # Extra packages
 PRODUCT_PACKAGES += \
@@ -60,7 +65,6 @@ PRODUCT_PACKAGES += \
     libaudio-resampler \
     libemoji \
     libfmjni \
-    libgralloc_extra \
     libnl_2 \
     libtinyalsa \
     libtinycompress \
@@ -108,9 +112,12 @@ PRODUCT_DEFAULT_PROPERTY_OVERRIDES += \
 
 # build.prop
 PRODUCT_PROPERTY_OVERRIDES += \
+    media.stagefright.legacyencoder=true \
+    media.stagefright.less-secure=true \
     persist.service.adb.enable=1 \
     persist.service.debuggable=1 \
-    persist.sys.root_access=0
+    persist.sys.root_access=0 \
+    ro.sys.fw.bg_apps_limits=5
 
 # extra log controls prop
 PRODUCT_PROPERTY_OVERRIDES += \

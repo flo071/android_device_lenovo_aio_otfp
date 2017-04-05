@@ -90,12 +90,12 @@ TARGET_KMODULES := true
 
 # Kernel
 BOARD_CUSTOM_BOOTIMG_MK := $(LOCAL_PATH)/bootimg/bootimg.mk
-TARGET_KERNEL_CONFIG := lineage_k3note_defconfig
+TARGET_KERNEL_CONFIG := aio_otfp_n_defconfig
 TARGET_KERNEL_SOURCE := kernel/lenovo/aio_otfp
 TARGET_MTK_KERNEL := true
 
 # Recovery allowed devices
-TARGET_OTA_ASSERT_DEVICE := K50-t5,aio_otfp_m,aio_otfp,K3Note
+TARGET_OTA_ASSERT_DEVICE := K50-t5,aio_otfp,aio_otfp_m,aio_otfp,K3Note
 
 # recovery
 TARGET_USE_CUSTOM_LUN_FILE_PATH := "/sys/class/android_usb/android0/f_mass_storage/lun/file"
@@ -187,11 +187,19 @@ WIFI_DRIVER_FW_PATH_STA          := STA
 WIFI_DRIVER_FW_PATH_AP           := AP
 WIFI_DRIVER_FW_PATH_P2P          := P2P
 
+# LED Path
+BOARD_RED_LED_PATH	:= "/sys/class/leds/test-led"
+BOARD_GREEN_LED_PATH	:= "/sys/class/leds/greenled"
+#BOARD_BLUE_LED_PATH	:= ""
+
 TARGET_SYSTEM_PROP := $(LOCAL_PATH)/system.prop
 TARGET_SPECIFIC_HEADER_PATH := $(LOCAL_PATH)/include
 
 # Hack for build
 #TARGET_BLOBS_BYPASS_SYMBOL_ERR := true
+
+# CM SEPolicy flags
+TARGET_NEEDS_PLATFORM_TEXT_RELOCATIONS := true
 
 # Hardware SEPolicy
 BOARD_SEPOLICY_DIRS += \
